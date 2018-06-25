@@ -1,0 +1,378 @@
+% Hlavicka pro protokoly z fyzikalniho praktika.
+% Verze pro: LaTeX
+% Verze hlavicky: 22. 2. 2007
+% Autor: Ustav fyziky kondenzovanych latek
+% Ke stazeni: www.physics.muni.cz/ufkl/Vyuka/
+% Licence: volne k pouziti, nejlepe k vcasnemu odevzdani protokolu z Vaseho mereni.
+
+\documentclass[a4paper,11pt]{article}
+
+% Kodovani (cestiny) v dokumentu: cp1250
+% \usepackage[cp1250]{inputenc}	% Omezena stredoevropska kodova stranka, pouze MSW.
+\usepackage[utf8]{inputenc}	% Doporucujeme pouzivat UTF-8 (unicode).
+\usepackage{subfig}
+\usepackage{float}
+\usepackage{siunitx}
+
+\usepackage{xparse}
+
+\newcommand{\Tau}{\mathcal{T}}
+
+\NewDocumentCommand{\codeword}{v}{%
+\texttt{\textcolor{codepurple}{#1}}%
+}
+
+%%% Nemente:
+\usepackage[margin=2cm]{geometry}
+\newtoks\jmenopraktika \newtoks\jmeno \newtoks\datum
+\newtoks\obor \newtoks\skupina \newtoks\rocnik \newtoks\semestr
+\newtoks\cisloulohy \newtoks\jmenoulohy
+\newtoks\tlak \newtoks\teplota \newtoks\vlhkost
+%%% Nemente - konec.
+
+
+%%%%%%%%%%% Doplnte pozadovane polozky:
+
+\jmenopraktika={Fyzikální praktikum 1}  % nahradte jmenem vaseho predmetu
+\jmeno={Milan Suk}            % nahradte jmenem mericiho
+\datum={10. dubna 2018}        % nahradte datem mereni ulohy
+\obor={F}                     % nahradte zkratkou vami studovaneho oboru
+\skupina={PO 8:00}            % nahradte dobou vyuky vasi seminarni skupiny
+\rocnik={I}                  % nahradte rocnikem, ve kterem studujete
+\semestr={II}                 % nahradte semestrem, ve kterem studujete
+
+\cisloulohy={8}               % nahradte cislem merene ulohy
+\jmenoulohy={Měření teploty} % nahradte jmenem merene ulohy
+
+\tlak={97,9}                   % nahradte tlakem pri mereni (v hPa)
+\teplota={21,4}               % nahradte teplotou pri mereni (ve stupnich Celsia)
+\vlhkost={40}               % nahradte vlhkosti vzduchu pri mereni (v %)
+
+%%%%%%%%%%% Konec pozadovanych polozek.
+
+
+%%%%%%%%%%% Uzitecne balicky:
+\usepackage[czech]{babel}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{xspace}
+\usepackage{url}
+\usepackage{indentfirst}
+\usepackage{listings}
+\usepackage{color}
+
+
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+ 
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2
+}
+ 
+\lstset{style=mystyle}
+
+%%%%%% Zamezeni parchantu:
+\widowpenalty 10000 \clubpenalty 10000 \displaywidowpenalty 10000
+%%%%%% Parametry pro moznost vsazeni vetsiho poctu obrazku na stranku
+\setcounter{topnumber}{3}	  % max. pocet floatu nahore (specifikace t)
+\setcounter{bottomnumber}{3}	  % max. pocet floatu dole (specifikace b)
+\setcounter{totalnumber}{6}	  % max. pocet floatu na strance celkem
+\renewcommand\topfraction{0.9}	  % max podil stranky pro floaty nahore
+\renewcommand\bottomfraction{0.9} % max podil stranky pro floaty dole
+\renewcommand\textfraction{0.1}	  % min podil stranky, ktery musi obsahovat text
+\intextsep=8mm \textfloatsep=8mm  %\intextsep pro ulozeni [h] floatu a \textfloatsep pro [b] or [t]
+
+% Tecky za cisly sekci:
+\renewcommand{\thesection}{\arabic{section}.}
+\renewcommand{\thesubsection}{\thesection\arabic{subsection}.}
+% Jednopismenna mezera mezi cislem a nazvem kapitoly:
+\makeatletter \def\@seccntformat#1{\csname the#1\endcsname\hspace{1ex}} \makeatother
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Zacatek dokumentu
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Nemente:
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\thispagestyle{empty}
+
+{
+\begin{center}
+\sf 
+{\Large Ústav fyzikální elektroniky Přírodovědecké fakulty Masarykovy univerzity} \\
+\bigskip
+{\huge \bfseries FYZIKÁLNÍ PRAKTIKUM} \\
+\bigskip
+{\Large \the\jmenopraktika}
+\end{center}
+
+\bigskip
+
+\sf
+\noindent
+\setlength{\arrayrulewidth}{1pt}
+\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}} l l}
+\large {\bfseries Zpracoval:}  \the\jmeno & \large  {\bfseries Naměřeno:} \the\datum\\[2mm]
+\large  {\bfseries Obor:} \the\obor  \hspace{40mm}  {\bfseries Skupina:} \the\skupina %
+&\large {\bfseries Testováno:}\\
+\\
+\hline
+\end{tabular*}
+}
+
+\bigskip
+
+{
+\sf
+\noindent \begin{tabular}{p{3cm} p{0.6\textwidth}}
+\Large  Úloha č. {\bfseries \the\cisloulohy:} \par
+&\Large \bfseries \the\jmenoulohy  \\[2mm]
+\end{tabular}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% konec Nemente.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Zacatek textu vlastniho protokolu
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\section{Úvod}
+
+    \paragraph{} V první části jsem zjišťoval závislost teploty na odporu
+    v olejové lázni. Teplota se nechala vzrůstat z teploty $20^{\circ}C$ na 
+    $120^{\circ}C$. Linerní regresí jsem pak  mohl určit hodnotu $\alpha$, pro 
+    kterou při lineární závislosti $R = a + b \cdot t$ platí
+
+    \begin{equation}
+        \alpha = \frac{b}{a}
+    \end{equation}
+
+    \paragraph{} V druhé části jsem zjišťoval relaxační dobu odporového čidla.
+    Pro relaxační dobu $\tau_{m}$ platí vztah
+
+    \begin{equation}
+        t(\tau) = t_{2} - (t_{2} - t_{1}) e^{- \frac{\tau}{\tau_{m}}}
+    \end{equation}
+
+    \paragraph{} Dále jsem proměřoval emisivitu desky pokryté černým, bílým
+    a aluminiovým lakem. Deska se vyhřála na teplotu $T$ a pak se proměřila
+    infračerveným teploměrem a získala se hodnota $T_{P}$. Pro emisivitu 
+    $\epsilon$ pak platí
+
+    \begin{equation}
+        \epsilon = \frac{T_{P}^{4}}{T^{4}}
+    \end{equation}
+
+    \paragraph{} Ve čtvrté části jsem emisivitu měřil přes okánka z různých
+    materiálů a určoval propustnost $\Tau$, pro kterou platí 
+
+    \begin{equation}
+        \Tau = \frac{T_{P}^{4}}{T^{4}}
+    \end{equation}
+
+    kde $T_{P}$ je zde teplota měřená přes okénko a $T_{P}$ bez okénka.
+
+    \paragraph{} V poslední části jsem proměřoval emisivitu povrchu s námrazou
+    a bez námrazi. K vyhodnocení lze použí rovnici (3).
+
+    \begin{equation}
+        \Tau = \frac{T_{P}^{4}}{T^{4}}
+    \end{equation}
+    
+\section{Postup měření}
+
+    \subsection{Teplotní závislost odporových čidel}
+
+        \paragraph{} Lieární regresí jsem určil koeficienty lineární funkce a
+        pomocí nich určil hodnotu $\alpha$.
+
+\begin{lstlisting}[language=Bash][H]
+from scipy import stats
+
+data_raw = open('mereni_8_000.txt').readlines()
+x = list()
+y = list()
+
+for line in data_raw:
+    d = line.replace(',' ,'.').split('\t')
+    x.append(float(d[1]))
+    y.append(float(d[4]))
+
+b, a, _, _, _ = stats.linregress(x, y)
+alpha = b / a
+
+print(f"R_0 = {a}")
+print(f"alpha = {alpha}")\end{lstlisting}
+
+        výsledek vyhodnocení je
+
+        $$ R_{0} = 954.42 \, \si{\ohm} $$
+        $$ \alpha = 0.00679 \, K^{-1} $$
+
+    \subsection{Relaxační doba odporového čidla}
+
+        \paragraph{} Nasbíraná data jsem nafitoval na funkci $a + b \cdot e^{- \frac{x}{c}}$.
+        Parameter $c$ pak přímo odpovídá hledané relaxační době.
+
+\begin{lstlisting}[language=Bash][H]
+from numpy import exp
+from scipy.optimize import curve_fit
+
+data_raw = open('suk_mereni_000.txt').readlines()
+x = list()
+y = list()
+
+for line in data_raw:
+    d = line.replace(',' ,'.').split('\t')
+    x.append(float(d[0]))
+    y.append(float(d[1]))
+
+def func(x, a, b, c):
+    return a + b * exp(- x / c)
+
+popt, pcov = curve_fit(func, x, y)
+
+print(popt)\end{lstlisting}
+
+        $$ \tau_{m} = \left(89 \pm 8\right) \, s$$
+
+    \subsection{Emisivita teploměru}
+
+        \paragraph{} Nejdříve jsem určil střední hodnotu teploty určené infračerveným
+        teploměrem, pak jsem dosadil do rovnice pro emisivitu.
+
+\begin{lstlisting}[language=Bash][H]
+import numpy
+from math import pow, sqrt
+
+pow2 = lambda x: x * x
+
+T = 483.15
+uT = 0.5
+
+data_raw = open('data1.txt').readlines()
+data = list()
+data_sub = list()
+
+for line in data_raw:
+    if line.strip() == '':
+        data.append(data_sub)
+        data_sub = []
+    else:
+        data_sub.append(float(line))
+
+def calc_epsilon(d: list):
+    t_p = numpy.average(d)
+
+    epsilon = pow(t_p / T, 4)
+    epsilon_err = epsilon * sqrt(pow2(4 * uT / T))
+
+    return (epsilon, epsilon_err)
+
+for d in data:
+    print(calc_epsilon(d))\end{lstlisting}
+
+    Pro jednotlivé materiály pak emisivita vychází
+
+    $$ \epsilon_{cerna} = \left(0.991 \pm 0.001\right)$$
+    $$ \epsilon_{bila} = \left(1.400 \pm 0.001\right)$$
+    $$ \epsilon_{aluminium} = \left(0.3847 \pm 0.0003\right)$$
+
+    \subsection{Propustnost $\tau$ okének}
+
+        \paragraph{} Co se týče analýzy tohoto experimentu, jedná se ve skutečnosti
+        o téměř stejný postup jako u předchozí části, takže na vyhodnocení výsledků
+        jsem použil úplně stejný script (naštěstí je napsán dostatečně oebcně, aby s ním
+        šlo vyhodnotit libovolný počet měření v jednom kroku), jen jsem místo skutečné
+        teploty $T$ používal teplotu naměřenou infračerveným teploměrem bez okénka.
+
+        $$ \Tau_{Cu} = 0.13 $$
+        $$ \Tau_{GaAs} = 0.46 $$
+        $$ \Tau_{Si} = 0.44 $$
+        $$ \Tau_{NaCl} = 0.55 $$
+        $$ \Tau_{KBr} = 0.20 $$
+        $$ \Tau_{CaF2} = 0.16 $$
+        $$ \Tau_{SiO2} = 0.15 $$
+        $$ \Tau_{polykarbonat} = 0.16 $$
+
+    \subsection{Emisivita povrchu s námrazou}
+
+        \paragraph{} K vyhodnocení tohot měření jsem upět použil variace na script
+        z předchozích měření. Spočítal jsem střední hodnoty teplot změřených kontaktním
+        teploměrem a pak infračerveným. Pak jsem jsem vzhledem k těmto hodnatám určil 
+        emisivitu podle rovnice (4).
+
+\begin{lstlisting}[language=Bash][H]
+import numpy
+from math import pow, sqrt
+
+pow2 = lambda x: x * x
+
+data_raw = open('data3.txt').readlines()
+data = list()
+data_sub = list()
+
+for line in data_raw:
+    if line.strip() == '':
+        data.append(data_sub)
+        data_sub = []
+    else:
+        data_sub.append(float(line) + 273.15)
+
+def calc_epsilon(t1_l: list, t2_l: list):
+    t_1 = numpy.average(t1_l)
+    t_1_err = numpy.average((t1_l - t_1)**2)
+    t_2 = numpy.average(t2_l)
+    t_2_err = numpy.average((t1_l - t_1)**2)
+
+    epsilon = pow(t_1 / t_2, 4)
+    epsilon_err = epsilon * sqrt(pow2(4 * t_1_err / t_1) + pow2(4 * t_2_err / t_2))
+    return (epsilon, epsilon_err)
+
+print(calc_epsilon(data[0], data[1]))
+print(calc_epsilon(data[2], data[3]))\end{lstlisting}
+
+    $$ \epsilon_{1} = 0.826 \pm 0.007 $$
+    $$ \epsilon_{2} = 0.937 \pm 0.008 $$
+
+    kde $\epsilon_{1}$ je emisivita povrchu s námrazou a $\epsilon_{2}$ 
+    povrchu bez námrazy.
+
+\section{Výsledky}
+
+    \paragraph{} Ve srovnáním s tabulkovými hodnotami jsou moje výsledky minimálně řádově
+    v pořádku. Trochu překvapující jsou pro mě hodnoty emisivity povrchu s námrazou a bez
+    námrazy, kde jsem očekával větší rozdíly těchto dvou hodnot. Zajímavé při měření bylo,
+    že jednotlivá měření pomocí infračerveného teploměru měla relativně velké roztyly, proto
+    se u některých měření špatně určovaly odchylky hodnot, protože samotné rozptyly teplot byly
+    řádově větší, než hodnoty emisivity samotné.
+    
+\end{document}

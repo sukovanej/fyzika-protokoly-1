@@ -1,0 +1,2 @@
+t1 = 13:56:46 (teplota vzduchu)
+t2 = 11:36:16 (31 stupnu)

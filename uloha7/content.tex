@@ -1,0 +1,271 @@
+% Hlavicka pro protokoly z fyzikalniho praktika.
+% Verze pro: LaTeX
+% Verze hlavicky: 22. 2. 2007
+% Autor: Ustav fyziky kondenzovanych latek
+% Ke stazeni: www.physics.muni.cz/ufkl/Vyuka/
+% Licence: volne k pouziti, nejlepe k vcasnemu odevzdani protokolu z Vaseho mereni.
+
+\documentclass[a4paper,11pt]{article}
+
+% Kodovani (cestiny) v dokumentu: cp1250
+% \usepackage[cp1250]{inputenc}	% Omezena stredoevropska kodova stranka, pouze MSW.
+\usepackage[utf8]{inputenc}	% Doporucujeme pouzivat UTF-8 (unicode).
+\usepackage{subfig}
+\usepackage{float}
+
+\usepackage{xparse}
+
+\NewDocumentCommand{\codeword}{v}{%
+\texttt{\textcolor{codepurple}{#1}}%
+}
+
+%%% Nemente:
+\usepackage[margin=2cm]{geometry}
+\newtoks\jmenopraktika \newtoks\jmeno \newtoks\datum
+\newtoks\obor \newtoks\skupina \newtoks\rocnik \newtoks\semestr
+\newtoks\cisloulohy \newtoks\jmenoulohy
+\newtoks\tlak \newtoks\teplota \newtoks\vlhkost
+%%% Nemente - konec.
+
+
+%%%%%%%%%%% Doplnte pozadovane polozky:
+
+\jmenopraktika={Fyzikální praktikum 1}  % nahradte jmenem vaseho predmetu
+\jmeno={Milan Suk}            % nahradte jmenem mericiho
+\datum={3. dubna 2018}        % nahradte datem mereni ulohy
+\obor={F}                     % nahradte zkratkou vami studovaneho oboru
+\skupina={PO 8:00}            % nahradte dobou vyuky vasi seminarni skupiny
+\rocnik={I}                  % nahradte rocnikem, ve kterem studujete
+\semestr={II}                 % nahradte semestrem, ve kterem studujete
+
+\cisloulohy={7}               % nahradte cislem merene ulohy
+\jmenoulohy={Měření poissonovy konstanty vzduchu} % nahradte jmenem merene ulohy
+
+\tlak={97,9}                   % nahradte tlakem pri mereni (v hPa)
+\teplota={21,4}               % nahradte teplotou pri mereni (ve stupnich Celsia)
+\vlhkost={40}               % nahradte vlhkosti vzduchu pri mereni (v %)
+
+%%%%%%%%%%% Konec pozadovanych polozek.
+
+
+%%%%%%%%%%% Uzitecne balicky:
+\usepackage[czech]{babel}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{xspace}
+\usepackage{url}
+\usepackage{indentfirst}
+\usepackage{listings}
+\usepackage{color}
+
+
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+ 
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2
+}
+ 
+\lstset{style=mystyle}
+
+%%%%%% Zamezeni parchantu:
+\widowpenalty 10000 \clubpenalty 10000 \displaywidowpenalty 10000
+%%%%%% Parametry pro moznost vsazeni vetsiho poctu obrazku na stranku
+\setcounter{topnumber}{3}	  % max. pocet floatu nahore (specifikace t)
+\setcounter{bottomnumber}{3}	  % max. pocet floatu dole (specifikace b)
+\setcounter{totalnumber}{6}	  % max. pocet floatu na strance celkem
+\renewcommand\topfraction{0.9}	  % max podil stranky pro floaty nahore
+\renewcommand\bottomfraction{0.9} % max podil stranky pro floaty dole
+\renewcommand\textfraction{0.1}	  % min podil stranky, ktery musi obsahovat text
+\intextsep=8mm \textfloatsep=8mm  %\intextsep pro ulozeni [h] floatu a \textfloatsep pro [b] or [t]
+
+% Tecky za cisly sekci:
+\renewcommand{\thesection}{\arabic{section}.}
+\renewcommand{\thesubsection}{\thesection\arabic{subsection}.}
+% Jednopismenna mezera mezi cislem a nazvem kapitoly:
+\makeatletter \def\@seccntformat#1{\csname the#1\endcsname\hspace{1ex}} \makeatother
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Zacatek dokumentu
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Nemente:
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\thispagestyle{empty}
+
+{
+\begin{center}
+\sf 
+{\Large Ústav fyzikální elektroniky Přírodovědecké fakulty Masarykovy univerzity} \\
+\bigskip
+{\huge \bfseries FYZIKÁLNÍ PRAKTIKUM} \\
+\bigskip
+{\Large \the\jmenopraktika}
+\end{center}
+
+\bigskip
+
+\sf
+\noindent
+\setlength{\arrayrulewidth}{1pt}
+\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}} l l}
+\large {\bfseries Zpracoval:}  \the\jmeno & \large  {\bfseries Naměřeno:} \the\datum\\[2mm]
+\large  {\bfseries Obor:} \the\obor  \hspace{40mm}  {\bfseries Skupina:} \the\skupina %
+&\large {\bfseries Testováno:}\\
+\\
+\hline
+\end{tabular*}
+}
+
+\bigskip
+
+{
+\sf
+\noindent \begin{tabular}{p{3cm} p{0.6\textwidth}}
+\Large  Úloha č. {\bfseries \the\cisloulohy:} \par
+&\Large \bfseries \the\jmenoulohy  \\[2mm]
+\end{tabular}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% konec Nemente.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Zacatek textu vlastniho protokolu
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\section{Úvod}
+
+    \paragraph{} V první částí jsem měřil hodnotu Poissonovy konstanty 
+    Clément-Desormesovou metodou. Do nádoby se po otevření ventilu natlakuje vzduch.
+    hladina se ustálí na výšce $h_{1}$, která se zaznamená. Pak se rychle otevře a
+    zavře ventil a po ustálení se zaznamená výška $h_{2}$. Pro Poissonovu
+    konstantu v těchto podmínkách platí
+
+    \begin{equation}
+        \kappa = \frac{h_{1}}{h_{1} - h_{2}}
+    \end{equation}
+
+    \paragraph{} V druhé části se měla Poissonova konstanta určit z rychlosti 
+    šíření vzvuku v plynu. Na generátoru jsem nastavil frekvenci $f$, posouval 
+    pástem v trubici a zaznamenával polohy $x_{i}$ maxim. Jejich rozdílem 
+    $x_{i + 1} - x_{i}$ zjistím vlnovou délku $\lambda$. Při známém tlaku $p$
+    a hustotě prostředí $\rho$ platí pro Poissonovu konstantu
+
+    \begin{equation}
+        \kappa = \frac{c^{2} \rho}{p}
+    \end{equation}
+
+    
+\section{Postup měření}
+
+    \subsection{Clément-Desormesova trubice}
+
+        \paragraph{} Po změření stačí určit průměrnou hodnotu přes všechny
+        získané hodnoty.
+
+\begin{lstlisting}[language=Bash][H]
+import numpy
+h1 = [53, 68, 74, 107, 108, 123, 129, 154, 184, 193]
+h2 = [1, 6, 7, 15, 16, 21, 23, 27, 34, 36]
+
+kappa_list = list()
+
+for i in range(len(h1)):
+    kappa_list.append(h1[i] / (h1[i] - h2[i]))
+
+kappa = numpy.average(kappa_list)
+kappa_err = numpy.average((kappa_list - kappa)**2)
+
+print(f"{kappa} +- {kappa_err}")\end{lstlisting}
+
+        výsledek vyhodnocení je
+
+        $$ \kappa = 1.165 \pm 0.004$$
+
+    \subsection{Kundtova trubice}
+
+        \paragraph{} Následující python script projdu získané body $x_{i}$, určí jejich rozdíly
+        a dvojnásobek vrátí jako hodnotu $\lambda$, následně dosadí do vytahu (2), čímž 
+        určí hodnotu Poissonovy konstanty.
+
+\begin{lstlisting}[language=Bash][H]
+import numpy
+from math import pow, sqrt
+
+pow2 = lambda x: x * x
+
+data = [
+    (961.7, [24.0, 41.7, 59.6, 77.5, 95.5]),
+    (1255.1, [33.0, 46.7, 60.2, 74., 87.8, 101.5]),
+    (1500.6, [24.3, 36.0, 47.5, 58.6, 70.2, 81.6, 93.0, 104.5]),
+    (1765.4, [29.1, 39.0, 48.5, 58.4, 68.0, 77.8, 87.5, 97.3, 107.0]),
+    (2012.1, [22.0, 30.8, 40.5, 49.2, 57.6, 65.8, 74.6, 83.2, 91.8, 100.3, 108.9])
+]
+
+rho = 1.129
+p, up = 96650, 50
+uf = 0.1
+
+def calc_lambda(x: list):
+    last = x[0]
+    l = list()
+
+    for i in range(1, len(x)):
+        l.append((x[i] - last) * 1e-2) # cm -> m
+        last = x[i]
+
+    x_average = numpy.average(l)
+    x_err = numpy.average((l - x_average)**2)
+
+    return (2 * x_average, 2 * x_err)
+
+def calc_kappa(lam, f):
+    kappa = pow(lam[0] * f, 2) * rho / p
+    kappa_err = kappa * sqrt(pow2(2 * uf / f) + pow2(2 * lam[1] / lam[0]) + pow2(up / p))
+
+    return (round(kappa, 3), round(kappa_err, 3))
+
+for d in data:
+    lam = calc_lambda(d[1])
+    print(calc_kappa(lam, d[0])) \end{lstlisting}
+
+    $$ \kappa_{1} = \left(1.381 \pm 0.001\right)$$
+    $$ \kappa_{2} = \left(1.381 \pm 0.001\right)$$
+    $$ \kappa_{3} = \left(1.381 \pm 0.001\right)$$
+    $$ \kappa_{4} = \left(1.381 \pm 0.001\right)$$
+    $$ \kappa_{5} = \left(1.429 \pm 0.001\right)$$
+
+\section{Výsledky}
+
+    \paragraph{} První metodou vyšla hodnota $\kappa$ asi $1.165$.  Výsledky Poissonovy 
+    konstanty měřené Kundtovou trubicí vyšli až na poslední téměř stejně $1.381$. Hodnoty
+    se sice poměrně liší, ale alespoň řádově jsem dostal poměrně dobrý výsledek.
+\end{document}

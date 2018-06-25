@@ -1,0 +1,339 @@
+% Hlavicka pro protokoly z fyzikalniho praktika.
+% Verze pro: LaTeX
+% Verze hlavicky: 22. 2. 2007
+% Autor: Ustav fyziky kondenzovanych latek
+% Ke stazeni: www.physics.muni.cz/ufkl/Vyuka/
+% Licence: volne k pouziti, nejlepe k vcasnemu odevzdani protokolu z Vaseho mereni.
+
+\documentclass[a4paper,11pt]{article}
+
+% Kodovani (cestiny) v dokumentu: cp1250
+% \usepackage[cp1250]{inputenc}	% Omezena stredoevropska kodova stranka, pouze MSW.
+\usepackage[utf8]{inputenc}	% Doporucujeme pouzivat UTF-8 (unicode).
+
+%%% Nemente:
+\usepackage[margin=2cm]{geometry}
+\newtoks\jmenopraktika \newtoks\jmeno \newtoks\datum
+\newtoks\obor \newtoks\skupina \newtoks\rocnik \newtoks\semestr
+\newtoks\cisloulohy \newtoks\jmenoulohy
+\newtoks\tlak \newtoks\teplota \newtoks\vlhkost
+%%% Nemente - konec.
+
+
+%%%%%%%%%%% Doplnte pozadovane polozky:
+
+\jmenopraktika={Fyzikální praktikum 1}  % nahradte jmenem vaseho predmetu
+\jmeno={Milan Suk}            % nahradte jmenem mericiho
+\datum={26. února 2018}        % nahradte datem mereni ulohy
+\obor={F}                     % nahradte zkratkou vami studovaneho oboru
+\skupina={PO 8:00}            % nahradte dobou vyuky vasi seminarni skupiny
+\rocnik={I}                  % nahradte rocnikem, ve kterem studujete
+\semestr={II}                 % nahradte semestrem, ve kterem studujete
+
+\cisloulohy={1}               % nahradte cislem merene ulohy
+\jmenoulohy={Měření hustosty válečku} % nahradte jmenem merene ulohy
+
+\tlak={97,9}                   % nahradte tlakem pri mereni (v hPa)
+\teplota={21,4}               % nahradte teplotou pri mereni (ve stupnich Celsia)
+\vlhkost={40}               % nahradte vlhkosti vzduchu pri mereni (v %)
+
+%%%%%%%%%%% Konec pozadovanych polozek.
+
+
+%%%%%%%%%%% Uzitecne balicky:
+\usepackage[czech]{babel}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{xspace}
+\usepackage{url}
+\usepackage{indentfirst}
+\usepackage{listings}
+\usepackage{color}
+
+
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+ 
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2
+}
+ 
+\lstset{style=mystyle}
+
+%%%%%% Zamezeni parchantu:
+\widowpenalty 10000 \clubpenalty 10000 \displaywidowpenalty 10000
+%%%%%% Parametry pro moznost vsazeni vetsiho poctu obrazku na stranku
+\setcounter{topnumber}{3}	  % max. pocet floatu nahore (specifikace t)
+\setcounter{bottomnumber}{3}	  % max. pocet floatu dole (specifikace b)
+\setcounter{totalnumber}{6}	  % max. pocet floatu na strance celkem
+\renewcommand\topfraction{0.9}	  % max podil stranky pro floaty nahore
+\renewcommand\bottomfraction{0.9} % max podil stranky pro floaty dole
+\renewcommand\textfraction{0.1}	  % min podil stranky, ktery musi obsahovat text
+\intextsep=8mm \textfloatsep=8mm  %\intextsep pro ulozeni [h] floatu a \textfloatsep pro [b] or [t]
+
+% Tecky za cisly sekci:
+\renewcommand{\thesection}{\arabic{section}.}
+\renewcommand{\thesubsection}{\thesection\arabic{subsection}.}
+% Jednopismenna mezera mezi cislem a nazvem kapitoly:
+\makeatletter \def\@seccntformat#1{\csname the#1\endcsname\hspace{1ex}} \makeatother
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Zacatek dokumentu
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Nemente:
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\thispagestyle{empty}
+
+{
+\begin{center}
+\sf 
+{\Large Ústav fyzikální elektroniky Přírodovědecké fakulty Masarykovy univerzity} \\
+\bigskip
+{\huge \bfseries FYZIKÁLNÍ PRAKTIKUM} \\
+\bigskip
+{\Large \the\jmenopraktika}
+\end{center}
+
+\bigskip
+
+\sf
+\noindent
+\setlength{\arrayrulewidth}{1pt}
+\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}} l l}
+\large {\bfseries Zpracoval:}  \the\jmeno & \large  {\bfseries Naměřeno:} \the\datum\\[2mm]
+\large  {\bfseries Obor:} \the\obor  \hspace{40mm}  {\bfseries Skupina:} \the\skupina %
+&\large {\bfseries Testováno:}\\
+\\
+\hline
+\end{tabular*}
+}
+
+\bigskip
+
+{
+\sf
+\noindent \begin{tabular}{p{3cm} p{0.6\textwidth}}
+\Large  Úloha č. {\bfseries \the\cisloulohy:} \par
+&\Large \bfseries \the\jmenoulohy  \\[2mm]
+\end{tabular}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% konec Nemente.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Zacatek textu vlastniho protokolu
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\section{Úvod}
+
+    \paragraph{} Cílem toho měření je zjistit hustotu válečku s válcovým výřezem. 
+    Hustota má být vypočtena pomocí měření jeho výšky, vnitřního a vnějšího průměru, a
+    jeho hmotnosti.
+
+    \paragraph{} Objem válečku určím pomocí změřené výšky $h$, vnitřního poloměru $r$ a
+    vnějšího poloměr $R$ pomocí rovnice
+
+    \begin{equation}
+    V = h \pi (R^{2} - r^{2})
+    \end{equation}
+
+    \paragraph{} Pak se změřenou hmotností $m$ lze určit hustotu válečku jako
+
+    \begin{equation}
+    \rho = \frac{m}{h \pi (R^{2} - r^{2})}
+    \end{equation}
+
+    při vlastním měření jsem ovšem ve skutečnosti měřil průměry $2R \to R$ a
+    $2r \to r$. Výslednou hustotu určím podle upraveného vztahu
+
+    \begin{equation}
+    \rho = \frac{4m}{h \pi (R^{2} - r^{2})}
+    \end{equation}
+
+    \subsection{Zpracování chyb měření}
+
+        \paragraph{} Nejistotu měření určím ze \textit{Zákona šíření nejistoty} jako
+
+        \begin{equation}
+        u(\rho) = \sqrt{
+          \left(\frac{\partial \rho}{\partial m}\right)^{2} \cdot u(m)^{2}
+        + \left(\frac{\partial \rho}{\partial r}\right)^{2} \cdot u(r)^{2} 
+        + \left(\frac{\partial \rho}{\partial R}\right)^{2} \cdot u(R)^{2}
+        + \left(\frac{\partial \rho}{\partial h}\right)^{2} \cdot u(h)^{2}
+        }
+        \end{equation}
+
+        konkrétně potom
+
+        \begin{equation}
+        u(\rho) = \sqrt{
+              \left(\frac{4u(m)}{h \pi \left(R^{2} - r^{2}\right)}\right)^{2}
+            + \left(\frac{8mR \cdot u(R)}{h \pi \left(R^{2} - r^{2}\right)^{2}}\right)^{2}
+            + \left(\frac{8mr \cdot u(r)}{h \pi \left(R^{2} - r^{2}\right)^{2}}\right)^{2}
+            + \left(\frac{4m \cdot u(h)}{h^{2} \pi \left(R^{2} - r^{2}\right)}\right)^{2}
+        }
+        \end{equation}
+
+\section{Postup měření}
+
+    \paragraph{} Pomocí posuvného měřidla (s přesností $0.02\,mm$) jsem 
+    nejdříve změřil vnitřní průměr $r$ a vnější průměr válečku $R$. Poté jsem
+    pomocí mikrometru (s přesností $0.01\,mm$) změřil výšku válečku $h$ a 
+    nakonec pomocí laboratorních vah jsem určil hmotnost válečku $m$.
+
+\section{Výsledky}
+
+    \subsection{Měření průměrů a výšky válce}
+
+     \begin{table}[h]
+        \centering
+            \begin{tabular}{ | l | l | l | }
+                \hline
+                $R$ $[mm]$ & $r$ $[mm]$& $h$ $[mm]$ \\ \hline
+                46.06 & 9.80 & 14.83 \\ \hline
+                46.10 & 9.76 & 14.75 \\ \hline
+                46.06 & 9.76 & 14.76 \\ \hline
+                46.06 & 9.78 & 14.77 \\ \hline
+                46.08 & 9.76 & 14.81 \\ \hline
+                46.06 & 9.82 & 14.82 \\ \hline
+                46.06 & 9.72 & 14.81 \\ \hline
+                46.06 & 9.78 & 14.86 \\ \hline
+                46.10 & 9.80 & 14.83 \\ \hline
+                46.08 & 9.80 & 14.77 \\
+                \hline
+            \end{tabular}
+        \caption{Měření průměrů a výšky válce}
+        \label{fig:method_b}
+    \end{table}
+
+    Hmotnost válečku jsem měřil na laboratorních vahách.
+
+    $$\overline{m} = 159.096g$$
+
+    Hodnoty průměrů a odchylek si nechám vypočítat počítačem.
+
+    \begin{lstlisting}[language=Python]
+import statistics
+import math
+
+R = [46.06, 46.10, 46.06, 46.06, 46.08, 46.06, 46.06, 46.06, 46.10, 46.08]
+r = [9.80, 9.76, 9.78, 9.76, 9.82, 9.82, 9.72, 9.78, 9.80, 9.80]
+h = [14.83, 14.75, 14.76, 14.77, 14.81, 14.82, 14.81, 14.86, 14.83, 14.77]
+
+result = {}
+
+student_9_6827 = 1.067
+student_9_9973 = 4.094
+
+for key, data in {"R": R, "r": r, "h": h}.items():
+    mean = statistics.mean(data)
+    stdev = statistics.stdev(data)
+    stdev1 = student_9_6827 * stdev
+    u = stdev1 / math.sqrt(len(data))
+    r = stdev1 / mean * 100
+
+    result[key] = {
+        "mean": mean,
+        "u": u,
+        "r": r
+    }
+
+print(result)\end{lstlisting} 
+
+    \paragraph{} Provoláním tohoto scriptu získám následující výstup
+
+    \begin{lstlisting}[language=Bash]
+> python3 valecek.py | sed -e "s/'/\"/g" | jq 
+{
+  "R": {
+    "mean": 46.072,
+    "u": 0.005690666666666419,
+    "r": 0.03905944623950355
+  },
+  "r": {
+    "mean": 9.784,
+    "u": 0.01045442222219864,
+    "r": 0.33789642112864493
+  },
+  "h": {
+    "mean": 14.801,
+    "u": 0.01226405507072511,
+    "r": 0.26202518325267715
+  }
+} \end{lstlisting}
+
+    \paragraph{} Spolu s kombinovanými nejistotami $u = \sqrt{u_{A}^{2} +
+    u_{B}^{2}}$ získám následující údaje o změřených veličinách.
+
+    $$m = (191.5761 \pm 0.001)\,g$$
+    $$R = (46.07 \pm 0.01)\,mm$$
+    $$r = (9.78 \pm 0.01)\,mm$$
+    $$h = (14.80 \pm 0.01)\,mm$$
+
+    \begin{lstlisting}[language=Python]
+from math import pow, sqrt, pi
+
+pow2 = lambda x: pow(x, 2)
+
+R = 46.07 / 1000
+r = 9.78 / 1000
+h = 14.80 / 1000
+m = 191.5761 / 1000
+
+uR = 0.01 / 1000
+ur = 0.01 / 1000
+uh = 0.01 / 1000
+um = 0.00005 / 1000
+
+u = 4 / (pi * h * (pow2(R) - pow2(r))) * \
+        sqrt(pow2(um) + pow2(m * uh / h) + pow2(2 * R * m * uR / (pow2(R) - \
+        pow2(r))) + pow2(2 * r * m * ur / (pow2(R) - pow2(r))))
+
+rho = m / (pi * h * (pow2(R / 2) - pow2(r / 2)))
+
+print("({} +- {}) kg * m^-3".format(rho, u)) \end{lstlisting}
+
+    A provoláním získám celkový výsledek.
+
+    \begin{lstlisting}[language=Bash]
+> python3 valecek_nejistota.py
+(8131.666998920163 +- 6.668565171779014) kg * m^-3 \end{lstlisting}
+
+    \paragraph{} Hledaná hustota tedy je
+    $$\rho = \left(8132 \pm 7 \right)\,kg \cdot m^{-3}$$.
+
+\section{Zhodnocení měření, závěr}
+
+    \paragraph{} Podle zjištěné hustoty byl neznámý materiál 
+    pravděpodobně \textbf{mosaz} či \textbf{nerezová ocel}.
+
+\end{document}

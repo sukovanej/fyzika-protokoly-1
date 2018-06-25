@@ -1,0 +1,317 @@
+% Hlavicka pro protokoly z fyzikalniho praktika.
+% Verze pro: LaTeX
+% Verze hlavicky: 22. 2. 2007
+% Autor: Ustav fyziky kondenzovanych latek
+% Ke stazeni: www.physics.muni.cz/ufkl/Vyuka/
+% Licence: volne k pouziti, nejlepe k vcasnemu odevzdani protokolu z Vaseho mereni.
+
+\documentclass[a4paper,11pt]{article}
+
+% Kodovani (cestiny) v dokumentu: cp1250
+% \usepackage[cp1250]{inputenc}	% Omezena stredoevropska kodova stranka, pouze MSW.
+\usepackage[utf8]{inputenc}	% Doporucujeme pouzivat UTF-8 (unicode).
+\usepackage[demo]{graphicx}
+
+%%% Nemente:
+\usepackage[margin=2cm]{geometry}
+\newtoks\jmenopraktika \newtoks\jmeno \newtoks\datum
+\newtoks\obor \newtoks\skupina \newtoks\rocnik \newtoks\semestr
+\newtoks\cisloulohy \newtoks\jmenoulohy
+\newtoks\tlak \newtoks\teplota \newtoks\vlhkost
+%%% Nemente - konec.
+
+
+%%%%%%%%%%% Doplnte pozadovane polozky:
+
+\jmenopraktika={Fyzikální praktikum 1}  % nahradte jmenem vaseho predmetu
+\jmeno={Milan Suk}            % nahradte jmenem mericiho
+\datum={26. února 2018}        % nahradte datem mereni ulohy
+\obor={F}                     % nahradte zkratkou vami studovaneho oboru
+\skupina={PO 8:00}            % nahradte dobou vyuky vasi seminarni skupiny
+\rocnik={I}                  % nahradte rocnikem, ve kterem studujete
+\semestr={II}                 % nahradte semestrem, ve kterem studujete
+
+\cisloulohy={3}               % nahradte cislem merene ulohy
+\jmenoulohy={Měření viskozity, hustoty a povrchového napětí kapalin} % nahradte jmenem merene ulohy
+
+\tlak={97,9}                   % nahradte tlakem pri mereni (v hPa)
+\teplota={21,4}               % nahradte teplotou pri mereni (ve stupnich Celsia)
+\vlhkost={40}               % nahradte vlhkosti vzduchu pri mereni (v %)
+
+%%%%%%%%%%% Konec pozadovanych polozek.
+
+
+%%%%%%%%%%% Uzitecne balicky:
+\usepackage[czech]{babel}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{xspace}
+\usepackage{url}
+\usepackage{indentfirst}
+\usepackage{listings}
+\usepackage{color}
+
+
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+ 
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2
+}
+ 
+\lstset{style=mystyle}
+
+%%%%%% Zamezeni parchantu:
+\widowpenalty 10000 \clubpenalty 10000 \displaywidowpenalty 10000
+%%%%%% Parametry pro moznost vsazeni vetsiho poctu obrazku na stranku
+\setcounter{topnumber}{3}	  % max. pocet floatu nahore (specifikace t)
+\setcounter{bottomnumber}{3}	  % max. pocet floatu dole (specifikace b)
+\setcounter{totalnumber}{6}	  % max. pocet floatu na strance celkem
+\renewcommand\topfraction{0.9}	  % max podil stranky pro floaty nahore
+\renewcommand\bottomfraction{0.9} % max podil stranky pro floaty dole
+\renewcommand\textfraction{0.1}	  % min podil stranky, ktery musi obsahovat text
+\intextsep=8mm \textfloatsep=8mm  %\intextsep pro ulozeni [h] floatu a \textfloatsep pro [b] or [t]
+
+% Tecky za cisly sekci:
+\renewcommand{\thesection}{\arabic{section}.}
+\renewcommand{\thesubsection}{\thesection\arabic{subsection}.}
+% Jednopismenna mezera mezi cislem a nazvem kapitoly:
+\makeatletter \def\@seccntformat#1{\csname the#1\endcsname\hspace{1ex}} \makeatother
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Zacatek dokumentu
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Nemente:
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\thispagestyle{empty}
+
+{
+\begin{center}
+\sf 
+{\Large Ústav fyzikální elektroniky Přírodovědecké fakulty Masarykovy univerzity} \\
+\bigskip
+{\huge \bfseries FYZIKÁLNÍ PRAKTIKUM} \\
+\bigskip
+{\Large \the\jmenopraktika}
+\end{center}
+
+\bigskip
+
+\sf
+\noindent
+\setlength{\arrayrulewidth}{1pt}
+\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}} l l}
+\large {\bfseries Zpracoval:}  \the\jmeno & \large  {\bfseries Naměřeno:} \the\datum\\[2mm]
+\large  {\bfseries Obor:} \the\obor  \hspace{40mm}  {\bfseries Skupina:} \the\skupina %
+&\large {\bfseries Testováno:}\\
+\\
+\hline
+\end{tabular*}
+}
+
+\bigskip
+
+{
+\sf
+\noindent \begin{tabular}{p{3cm} p{0.6\textwidth}}
+\Large  Úloha č. {\bfseries \the\cisloulohy:} \par
+&\Large \bfseries \the\jmenoulohy  \\[2mm]
+\end{tabular}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% konec Nemente.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Zacatek textu vlastniho protokolu
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\section{Úvod}
+
+    \paragraph{} V tomto měření se měla měřenít vizkozita, hustota a povrchové
+    napětí kapalin. V první části jsem měřil kinematickou viskozitu vody pro 
+    více teplot pomocí \textbf{Ubbhelohdeho viskozimetru}. V tomto měření se 
+    voda unitř viskozimetru ohrála na požadovanou teplotu umístěním do nádoby
+    s vodou požadované teploty. Následně se měřil čas poklesu hladiny z horní 
+    rysky na dolní. Ze vztahu
+
+    
+    \begin{equation}
+        \nu = K \cdot t
+    \end{equation}
+
+    se následně určila hledaná viskozita.
+
+    \paragraph{} V dalším měření se vizkosita určila pomocí výtoku vody z 
+    \textbf{Mariottovy láhve}. Změřil se čas, po který voda vytékala, a změna tlaku 
+    $p = p_{2} - p_{1}$. Viskozita se potom určí pomocí následující rovnice.
+
+    \begin{equation}
+        \eta = \frac{\pi R^{4} p t}{8 V L}
+    \end{equation}
+
+    kde $V$ je celkový objem, který vyteče a $L$ délka kapiláry. 
+
+    \paragraph{} Poté jsem určoval hustotu lihu pomocí \textbf{pyknometru} a známé
+    hustoty vody. Pro neznámou hustotu lihu platí
+
+    \begin{equation}
+        \rho = (\rho_{voda} - \rho_{vzduch}) \frac{m - m_{0}}{m_{voda} - m_{0}} 
+        + \rho_{vzduch}
+    \end{equation}
+
+    kde $m_{0}$ je hmotnost prázdného pyknometru a $m$ hmotnost pyknometru s lihem.
+
+    \paragraph{} Hustotu lihu jsem pak ještě určil pomocí medoty \textbf{ponorného
+    tělíska}.  Měření probíhalo na vahách s délním zavěšením. Váhy se vytárovaly na 
+    hmotnost tělíska, pak jsem změřila hmotnost $m$ při ponoření tělíska do nádoby 
+    s lihem a potom $m_{voda}$ při ponoření do nádoby s vodou. Hustota lze pak spočítat
+    pomocí vztahu
+
+    \begin{equation}
+        \rho = \frac{m}{m_{voda}} \rho_{voda}
+    \end{equation}
+
+    \paragraph{} Dále se mělo změřit povrchové napětí vody pomocí \textbf{du Noüyho 
+    metody kroužku}. Při tomto měření se určila největší síla působící na kroužek,
+    aby se pověrchové napětí určitě dle vztahu
+
+    \begin{equation}
+        \sigma = \frac{F_{max}}{4 \pi R} \cdot f
+    \end{equation}
+
+    kde $f$ je Harkinsův-Jordanův korekční faktor.
+
+    \paragraph{} V posledním měření jsem určoval disporzní složku povrchové
+    energie vody metodou kontaktního úhlu. Jako kalibrační kapalinu jsem použil 
+    glycerol a metylen jodid.
+
+    \begin{equation}
+        \frac{\sigma^{lw}}{\sigma} = \frac{\sigma^{lw}_{kal}}{\sigma_{kal}}
+        \frac{\sigma}{\sigma_{kal}} \left(\frac{1 + \cos \theta}{1 + \cos \theta_{kal}}\right)^{2}
+    \end{equation}
+
+\section{Výsledky}
+
+    \subsection{Měření viskozity vody}
+
+        \paragraph{} Prováděl jsem měření pro dvě teploty ($20 ^{\circ}C$ a $30 ^{\circ}C$). Získané časy jsou
+
+        $$ t_{20} = 13:56:46 \\ $$
+        $$ t_{30} = 11:36:16 $$
+
+        odtud jsem zjistil, že viskozita vody pro jednotlivé časy by měla být
+
+        $$ \nu_{20} = 8.887 \cdot 10^{-7} \, m^{2} \cdot s^{-1} \\ $$
+        $$ \nu_{30} = 7.398 \cdot 10^{-7} \, m^{2} \cdot s^{-1} $$
+
+    \subsection{Absolutní měření viskozity}
+
+        \paragraph{} Při této mětodě jsem měřil čas vytíkání vody kapilarou z
+        Mariottovy láhve. Délka kapiláry je $L = \left(165.0 \pm 0.5\right) \, mm$ a její průměr
+        $R = \left(0.570 \pm 0.001\right) \, mm$. Pak jsem zjišťoval změnu tlaku tak, že jsem změřil změnu 
+        výšku hladiny, určit jsem objem vody, která vytekla, a čas trvání tohoto procesu.
+
+        $$t = 108 \, s$$
+        $$\Delta V = 2.82 \cdot 10^{-5} m^{3} $$
+        $$p = 1096.4 \, Pa $$
+
+        Po dosazení vychází výsledná viskozita
+
+        $$ \eta = \left(1.055 \pm 0.003\right) \, Pa \cdot s$$
+
+    \subsection{Pyknometrická metoda}
+
+        \paragraph{} Změřil jsem jednotlivé hmotnosti
+
+        $$ m_{1} = 42.3 \, g $$
+        $$ m_{2} = 44.4 \, g $$
+        $$ m_{1} = 23.5 \, g $$
+
+        \paragraph{} po dosazení do vztahu (3) dostávám
+
+        $$ \rho_{lih} = 897.0 \pm 0.1 \, kg \cdot m^{-3} $$
+
+    \subsection{Ponorné tělísko}
+
+        \paragraph{} V tomto měření hustoty lihu jsem nejdříve změřil hmotnost $m_{1}$ s
+        destilovanou vodou a potom $m_{2}$ s lihem.
+
+        $$ m_{1} = 5.76 \, g $$
+        $$ m_{2} = 11.30 \, g $$
+
+        \paragraph{} a po dosazení do rovnice (4) dostávám
+
+        $$ \rho_{lih} = 508.21 \pm 0.01 \, kg \cdot m^{-3} $$
+    
+    \subsection{du Nouyho metoda kroužku}
+
+        \paragraph{} Při této mětodě jsem určoval maxinální sílu působící mezi kroužkem a
+        hladinou kapaliny. Skriptem níže jsem zanalyzoval data (jednoduše jsem našel největší
+        hodnotu v seznamu s hodnotamy síly)
+
+\begin{lstlisting}[language=Python][h]
+import numpy
+data = numpy.loadtxt(file_name)
+x = [i[0] for i in data]
+print(max(y))\end{lstlisting}
+
+        \paragraph{} Z těchto hodnot jsem určit hodnotu průměrnou
+
+        $$ F_{max} = \left(35.38 \pm 0.01 \right) \cdot 10^{-3} \, N $$
+
+        a výsledné povrchové napětí je
+
+        $$ \sigma = \left(74.8 \pm 0.3 \right) \cdot 10^{-3} \, N \cdot m^{-1} $$
+
+    \subsection{Metoda kontaktního úhlu}
+
+        \paragraph{} Při této metodě jsem měřil kontaktní úhel vody z naměřených kontaktních 
+        úhlů a známých napětí kalibračních kapalin (glycerol a metylen jodid) pomocí vztahu 
+        (6).
+        
+        $$\theta = 96.8 ^{\circ}$$
+        $$\theta_{1} = 73.1 ^{\circ}$$
+        $$\theta_{2} = 91.8 ^{\circ}$$
+
+        Z těchto hodnot jsem dopočítal následující povrchové napětí vody.
+
+        $$\sigma_{1} = \left(16.2 \pm 0.1 \right) \cdot 10^{-3} \, N \cdot m^{-1}$$
+        $$\sigma_{2} = \left(61.2 \pm 0.1 \right) \cdot 10^{-3} \, N \cdot m^{-1}$$
+
+\section{Zhodnocení měření, závěr}
+
+    \paragraph{} Po dokončení měření je porovnáním s tabulkovými hodnotami vidět, že výsledky
+    viskozit a povrchových napětí vyšli poměrně dobře (až na odchylku $\sigma_{1}$ v posledním měření
+    pomocí metylen jodidu). Mnohem lepší shodu jsem čekal u měření hustoty pomocí pyknometrické metody,
+    pravděpodobně bylo měření zatíženo hrubou chybou.
+
+\end{document}

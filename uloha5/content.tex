@@ -1,0 +1,362 @@
+% Hlavicka pro protokoly z fyzikalniho praktika.
+% Verze pro: LaTeX
+% Verze hlavicky: 22. 2. 2007
+% Autor: Ustav fyziky kondenzovanych latek
+% Ke stazeni: www.physics.muni.cz/ufkl/Vyuka/
+% Licence: volne k pouziti, nejlepe k vcasnemu odevzdani protokolu z Vaseho mereni.
+
+\documentclass[a4paper,11pt]{article}
+
+% Kodovani (cestiny) v dokumentu: cp1250
+% \usepackage[cp1250]{inputenc}	% Omezena stredoevropska kodova stranka, pouze MSW.
+\usepackage[utf8]{inputenc}	% Doporucujeme pouzivat UTF-8 (unicode).
+\usepackage[demo]{graphicx}
+
+%%% Nemente:
+\usepackage[margin=2cm]{geometry}
+\newtoks\jmenopraktika \newtoks\jmeno \newtoks\datum
+\newtoks\obor \newtoks\skupina \newtoks\rocnik \newtoks\semestr
+\newtoks\cisloulohy \newtoks\jmenoulohy
+\newtoks\tlak \newtoks\teplota \newtoks\vlhkost
+%%% Nemente - konec.
+
+
+%%%%%%%%%%% Doplnte pozadovane polozky:
+
+\jmenopraktika={Fyzikální praktikum 1}  % nahradte jmenem vaseho predmetu
+\jmeno={Milan Suk}            % nahradte jmenem mericiho
+\datum={19. března 2018}        % nahradte datem mereni ulohy
+\obor={F}                     % nahradte zkratkou vami studovaneho oboru
+\skupina={PO 8:00}            % nahradte dobou vyuky vasi seminarni skupiny
+\rocnik={I}                  % nahradte rocnikem, ve kterem studujete
+\semestr={II}                 % nahradte semestrem, ve kterem studujete
+
+\cisloulohy={5}               % nahradte cislem merene ulohy
+\jmenoulohy={Měření modul pružnosti pevných látek} % nahradte jmenem merene ulohy
+
+\tlak={97,9}                   % nahradte tlakem pri mereni (v hPa)
+\teplota={21,4}               % nahradte teplotou pri mereni (ve stupnich Celsia)
+\vlhkost={40}               % nahradte vlhkosti vzduchu pri mereni (v %)
+
+%%%%%%%%%%% Konec pozadovanych polozek.
+
+
+%%%%%%%%%%% Uzitecne balicky:
+\usepackage[czech]{babel}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{xspace}
+\usepackage{url}
+\usepackage{indentfirst}
+\usepackage{listings}
+\usepackage{color}
+
+
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+ 
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2
+}
+ 
+\lstset{style=mystyle}
+
+%%%%%% Zamezeni parchantu:
+\widowpenalty 10000 \clubpenalty 10000 \displaywidowpenalty 10000
+%%%%%% Parametry pro moznost vsazeni vetsiho poctu obrazku na stranku
+\setcounter{topnumber}{3}	  % max. pocet floatu nahore (specifikace t)
+\setcounter{bottomnumber}{3}	  % max. pocet floatu dole (specifikace b)
+\setcounter{totalnumber}{6}	  % max. pocet floatu na strance celkem
+\renewcommand\topfraction{0.9}	  % max podil stranky pro floaty nahore
+\renewcommand\bottomfraction{0.9} % max podil stranky pro floaty dole
+\renewcommand\textfraction{0.1}	  % min podil stranky, ktery musi obsahovat text
+\intextsep=8mm \textfloatsep=8mm  %\intextsep pro ulozeni [h] floatu a \textfloatsep pro [b] or [t]
+
+% Tecky za cisly sekci:
+\renewcommand{\thesection}{\arabic{section}.}
+\renewcommand{\thesubsection}{\thesection\arabic{subsection}.}
+% Jednopismenna mezera mezi cislem a nazvem kapitoly:
+\makeatletter \def\@seccntformat#1{\csname the#1\endcsname\hspace{1ex}} \makeatother
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Zacatek dokumentu
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Nemente:
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\thispagestyle{empty}
+
+{
+\begin{center}
+\sf 
+{\Large Ústav fyzikální elektroniky Přírodovědecké fakulty Masarykovy univerzity} \\
+\bigskip
+{\huge \bfseries FYZIKÁLNÍ PRAKTIKUM} \\
+\bigskip
+{\Large \the\jmenopraktika}
+\end{center}
+
+\bigskip
+
+\sf
+\noindent
+\setlength{\arrayrulewidth}{1pt}
+\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}} l l}
+\large {\bfseries Zpracoval:}  \the\jmeno & \large  {\bfseries Naměřeno:} \the\datum\\[2mm]
+\large  {\bfseries Obor:} \the\obor  \hspace{40mm}  {\bfseries Skupina:} \the\skupina %
+&\large {\bfseries Testováno:}\\
+\\
+\hline
+\end{tabular*}
+}
+
+\bigskip
+
+{
+\sf
+\noindent \begin{tabular}{p{3cm} p{0.6\textwidth}}
+\Large  Úloha č. {\bfseries \the\cisloulohy:} \par
+&\Large \bfseries \the\jmenoulohy  \\[2mm]
+\end{tabular}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% konec Nemente.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Zacatek textu vlastniho protokolu
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\section{Úvod}
+
+    \paragraph{} V první části jsem měl určovat modul pružnosti drátu přímou metodou.
+    Na drát toušťky $d$ se pustepně zavěšovala závaží a měřila se závislost prověšení 
+    $\Delta l$ na celkové hmotnosti $m$.
+
+    \begin{equation}
+        \Delta l = \frac{4 g l}{\pi d^{2} E} m 
+    \end{equation}
+
+    Ze směrnice $k = \frac{4 g l}{\pi d^{2} E}$ pak můřu určit modul pružnosti $E$.
+
+    \paragraph{} V druhé části jsem měřil modul pružnosti z průhybu nosníku. Ze změřené
+    závislosti $y$ jsem určil modul pružnosti $E$. 
+
+    \begin{equation}
+        y = \frac{m g l^{3}}{4 E a^{3} b}
+    \end{equation}
+
+    Ze směrnice jsem potom podobně jako u předchozího experimentu získat samotnou
+    hodnotu $E$.
+
+    \paragraph{} V poslední části se pak měl určit modul pružnosti drátu ve smyku
+    dynamickou metodou. Ze změřené periody kmitů $T$ lze modul pružnosti $G$ určit
+    jako
+
+    \begin{equation}
+        G = \frac{16 \pi m R^{2} l}{5 r^{4} T^{2}}
+    \end{equation}
+
+\section{Výsledky}
+
+    \subsection{Modul pružnosti v tahu měřený přímou metodou}
+
+        \paragraph{} Z naměřených stačí spočítat lineární regresí sklon, ten
+        je roven konstantě $k$.
+
+\begin{lstlisting}[language=Python][h]
+import numpy
+import matplotlib.pyplot as plt
+from scipy import stats
+
+data = [float(i.strip()) for i in open('data_1').readlines()[:21]]
+weights = [float(i.strip()) for i in open('vahy_1').readlines()[:10]]
+
+x = list()
+last = 0
+for i in weights:
+    last = last + i
+    x.append(last)
+
+x.insert(0, 0)
+
+x_rev = list(reversed(x))
+
+y = data[:11]
+y_rev = data[10:]
+
+slope, intercept, r_value, p_value, std_err = stats.linregress(x, y)
+print(slope, std_err)
+slope, intercept, r_value, p_value, std_err = stats.linregress(x_rev, y_rev)
+print(slope, std_err)\end{lstlisting}
+
+        Tento script výhodí směrnici i s odchylkou.
+
+        $$k_{1} = \left(432 \pm 3\right) \cdot 10^{-6} m \cdot kg^{-1}$$
+        $$k_{2} = \left(425 \pm 1\right) \cdot 10^{-6} m \cdot kg^{-1}$$
+
+        tloušťka drátu je $d = 5.0 \cdot 10^{-4} \, m$ a výchozí délka drátu
+        $l = 1.565 \, m$. Modul pružnosti lze pak určit pomocí rovnice
+
+        \begin{equation}
+            E = \frac{4 g l}{\pi d^{2} k}
+        \end{equation}
+
+        A odtud vychází modul pružnosti
+
+        $$ E_{1} = \left(18 \pm 4\right) \cdot 10^{10} Pa$$
+        $$ E_{2} = \left(18 \pm 4\right) \cdot 10^{10} Pa$$
+
+    \subsection{Modul pružnosti v tahu z průhybu nosníku}
+
+        \paragraph{} Při zpracování dat jsem postupoval podobně jako u předchozího
+        měření, zjistil jsem směrnici $k$ a z ní jsem určil modul pružnosti $E$. 
+
+\begin{lstlisting}[language=Python][h]
+import numpy
+import matplotlib.pyplot as plt
+from scipy import stats
+
+def is_number(n):
+    try:
+        float(n)
+    except ValueError:
+        return False
+    return True
+
+data_raw = [float(i.strip()) * 1e-3 for i in open('data_2').readlines() if is_number(i)]
+weights = [float(i.strip()) * 1e-3 for i in open('vahy_2').readlines()[:10]]
+sizes = [float(i.strip()) * 1e-3 for i in open('data_2_rozmery').readlines() if is_number(i)]
+
+a, ua, b, ub = list(), list(), list(), list()
+
+for i in range(5):
+    a.append(numpy.average(sizes[20 * i : 20 * i + 10]))
+    b.append(numpy.average(sizes[20 * i + 10 : 20 * i + 20]))
+
+    ub.append(numpy.average((sizes[20 * i : 20 * i + 10] - a[-1])**2))
+    ua.append(numpy.average((sizes[20 * i + 10 : 20 * i + 20] - b[-1])**2))
+
+data_points = [(0, 9), (9, 30), (30, 51), (51, 72), (72, 93)]
+data = list()
+for i, j in data_points:
+    data.append(data_raw[i:j])
+
+_x = list()
+_x.append(0)
+last = 0
+for i in weights:
+    last = last + i
+    _x.append(last)
+
+x = [_x[:5]]
+for _ in range(4):
+    x.append(_x)
+
+
+def analyze(x, y):
+    x_rev = list(reversed(x))
+    k1, _, _, _, err1 = stats.linregress(x, y[:len(x)])
+    k2, _, _, _, err2 = stats.linregress(x_rev, y[len(x) - 1:])
+    return (k1, err1, k2, err2)
+
+
+def calculate_e(a, ua, b, ub, l, ul, k, uk):
+    from math import pow, sqrt
+    g = 9.81
+    pow2 = lambda x: pow(x, 2)
+    E = g * pow(l, 3) / (4 * k * pow(a, 3) * b)
+    uE = g * pow(l, 3) / (4 * k * pow(a, 3) * b) * sqrt(pow2(3 * ua / a) + pow2(ub / b) + pow2(3 * ul / l) + pow2(uk / k))
+
+    return (E, uE)
+
+
+l, ul = (0.898, 0.0005)
+for i in range(5):
+    k1, uk1, k2, uk2 = analyze(x[i], data[i])
+    print(calculate_e(a[i], ua[i], b[i], ub[i], l, ul, k1, uk1))
+    print(calculate_e(a[i], ua[i], b[i], ub[i], l, ul, k2, uk2)) \end{lstlisting}
+
+    výsledné moduly pružnosti jsou
+
+    $$ E_{uhlik} = \left(9 \pm 1\right) \, GPa$$
+    $$ E_{mosaz} = \left(4603 \pm 12\right) \, GPa$$
+    $$ E_{ocel} = \left(8372 \pm 1\right) \, GPa$$
+    $$ E_{hlinik} = \left(12108 \pm 25\right) \, GPa$$
+    $$ E_{mosaz}^{(2)} = \left(96.9 \pm 0.2\right) \, GPa$$
+
+    \subsection{Modul pružnosti ve smyku}
+
+        \paragraph{} Následujícím scriptem jsem určil hodnty neznámých veličin a
+        jejich nejistoty, script nakonec vypočítá výsledný modul pružnosti.
+
+\begin{lstlisting}[language=Python][h]
+import numpy
+from math import pi, sqrt, pow
+
+m = 5.905
+um = 0.0005
+_T = [3.96, 3.99, 4.07, 3.99, 3.99, 4.07, 4.02, 3.99, 3.96, 3.91] # s
+_R = [9.576, 9.562, 9.562, 9.572, 9.560, 9.524, 9.570, 9.578, 9.514, 9.568] # cm
+_l = [51.5, 51.4, 51.6, 51.4, 51.5, 51.5, 51.4, 51.5, 51.4, 51.6] # cm
+_r = [1.00, 1.00, 0.99, 1.00, 1.00, 0.99, 0.99, 1.00, 0.99, 1.00] # mm
+
+# uprava na zakladni jednotky
+_R = [i * 1e-2 for i in _R]
+_l = [i * 1e-2 for i in _l]
+_r = [i * 1e-3 for i in _r]
+
+T = numpy.average(_T)
+R = numpy.average(_R)
+l = numpy.average(_l)
+r = numpy.average(_r)
+
+uT = numpy.average((_T - T)**2)
+uR = numpy.average((_R - R)**2)
+ul = numpy.average((_l - l)**2)
+ur = numpy.average((_r - r)**2)
+
+pow2 = lambda x: pow(x, 2)
+G = 16 * pi * m * pow(R, 2) * l / (5 * pow(r, 4) * pow(T, 2))
+uG = G * sqrt(pow2(um /m) + pow2(2 * uR / R) + pow2(ul / l) + pow2(4 * ur / r) + pow2(2 * uT / T))
+
+print(G, uG) \end{lstlisting}
+
+    $$ G = \left(1778 \pm 2\right) \cdot 10^{7} \, Pa$$
+
+\section{Zhodnocení měření, závěr}
+
+    \paragraph{} U měřeních, kde bylo potřeba měřit hmotnosti válečků, je zajímavé, že
+    přesto, že jednotlivé hmotnosti se liší nepatrně, celková hmotnost by vyrobila rozdíl
+    několik gramů. Výsledky se vůči tabulkovým hodnotám někdy liší docela výrazně, zejména hodnoty
+    modulu pružnosti v tahu pohybující se v tisisích $GPa$ jsou pravděpodobně zatíženy nějakou
+    chybou. Zbytek se alespoň řádově shoduje.
+
+\end{document}
